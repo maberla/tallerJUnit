@@ -7,6 +7,8 @@ public class CarritoCompraService {
 	
 	List<Articulo> articulos = new ArrayList<Articulo>();
 	
+	static List<Articulo> articulos2 = new ArrayList<Articulo>();
+	
 	public void limpiarCesta(){
 		articulos = new ArrayList<Articulo>();
 	}
@@ -19,6 +21,7 @@ public class CarritoCompraService {
 		return articulos.size();
 	}
 	
+	//stream. de todos los articulos los convierte en string y llama de cada uno de ellos a la funcion getprecio, los almacena y realiza una suma de todos (se ahorra codigo)
 	public Double totalPrice(){
 		double precioTotal = articulos.stream().  	
 			     mapToDouble(Articulo::getPrecio).
@@ -37,7 +40,4 @@ public class CarritoCompraService {
 	public void setArticulos(List<Articulo> articulos) {
 		this.articulos = articulos;
 	}
-	
-	
-
 }
