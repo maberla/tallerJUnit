@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import com.everis.bootcamp.pruebamock.UserRepository;
 import com.everis.bootcamp.pruebamock.UserService;
@@ -21,6 +22,7 @@ public class UserServiceTest {
 		//con la linea de abajo decimos que cuando hagamos una llamada a getallnames no devuelve una lista de alumnos sino lo que le pasamos. 
 		//Esto es para probar el service. No nos importa lo que haya en  el userrepository. Como una simulacion o preparacion.
 		when(repo.getAllNames()).thenReturn(Arrays.asList("Alejandro", "Pablo", "Ruben"));
+		when(repo.addNomUser(Mockito.anyString()));
 		service = new UserService(repo);
 	}
 	
@@ -35,5 +37,10 @@ public class UserServiceTest {
 		
 		assertTrue(lista.size() == 3);//comprobacion de que hay 3 alumnos en la lista
 		System.out.println("El test va bien");
+	}
+	
+	@Test
+	public void testAddName() {
+		System.out.println("Test addName");
 	}
 }
